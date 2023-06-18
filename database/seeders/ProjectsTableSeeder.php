@@ -19,7 +19,7 @@ class ProjectsTableSeeder extends Seeder
   {
     for ($i=0; $i < 25 ; $i++) {
 
-      $new_project = New Project;
+      $new_project = new Project();
       $new_project->name = $faker->words(3, true);
       $new_project->slug = Project::generateSlug($new_project->name);
       $new_project->description = $faker->text();
