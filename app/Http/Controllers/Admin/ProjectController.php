@@ -39,17 +39,13 @@ class ProjectController extends Controller
   {
     $form_data = $request->all();
 
-    $new_project = new Project();
-    $new_project->name = $form_data['name'];
-    $new_project->slug = Project::generateSlug($form_data['name']);
-    $new_project->description = $form_data['description'];
-    $new_project->category = $form_data['category'];
-    $new_project->date_creation = $form_data['date_creation'];
+    $form_data['slug'] = Project::generateSlug($form_data['name']);
 
+    $new_project = new Project();
+    $new_project->fill($form_data);
     $new_project->save();
 
     return redirect()->route('admin.project.show', $new_project);
-
   }
 
   /**
