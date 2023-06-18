@@ -20,11 +20,9 @@
 
   @include('admin.partials.header')
 
-  <div class="main-wrapper">
+  <div class="main-wrapper d-flex">
 
-    <aside>
-      ASIDE
-    </aside>
+    @include('admin.partials.aside')
 
     <main class="">
       @yield('content')

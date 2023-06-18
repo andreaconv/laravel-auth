@@ -1,1 +1,17 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+header{
+  height: 60px;
+}
+
+.main-wrapper{
+  height: calc(100vh - 60px);
+
+  aside{
+    height: 100%;
+    width: 250px;
+    flex-shrink: 0;
+    background-color: gray;
+
+  }
+}
