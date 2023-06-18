@@ -49,12 +49,12 @@
       <div class="mb-3">
         <label for="descrizione" class="form-label">Descrizione</label>
         <textarea
-          name="descrizione"
-          id="descrizione"
+          name="description"
+          id="description"
           class="form-control"
           placeholder="Descrizione"
           cols="30"
-          rows="10">{{ old('descrizione') }}</textarea>
+          rows="10">{{ old('description') }}</textarea>
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>
