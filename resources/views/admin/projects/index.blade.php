@@ -28,7 +28,7 @@
           <td>{{ $project->category }}</td>
           @php $date = date_create($project->date_creation) @endphp
           <td>{{ date_format($date, 'd/m/Y') }}</td>
-          <td><a href="#" class="btn btn-success">Vai</a></td>
+          <td><a href="{{ route('admin.project.show', $project) }}" class="btn btn-success">Vai</a></td>
         </tr>
       @endforeach
     </tbody>

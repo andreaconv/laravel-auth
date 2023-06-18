@@ -46,9 +46,11 @@ class ProjectController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
+  public function show(Project $project)
   {
-      //
+    $date = date_create($project->date_creation);
+    $data_formatted = date_format($date, 'd/m/Y');
+    return view('admin.projects.show', compact('project', 'data_formatted'));
   }
 
   /**
