@@ -16,7 +16,7 @@
         <th scope="col">Descrizione</th>
         <th scope="col">Categoria</th>
         <th scope="col">Data di creazione</th>
-        <th scope="col">Azioni</th>
+        <th id="actions" scope="col">Azioni</th>
       </tr>
     </thead>
     <tbody>
@@ -24,11 +24,14 @@
         <tr>
           <th scope="row">{{ $project->id }}</th>
           <td>{{ $project->name }}</td>
-          <td>{{ $project->text }}</td>
+          <td>{!! $project->description !!}</td>
           <td>{{ $project->category }}</td>
           @php $date = date_create($project->date_creation) @endphp
           <td>{{ date_format($date, 'd/m/Y') }}</td>
-          <td><a href="{{ route('admin.project.show', $project) }}" class="btn btn-success">Vai</a></td>
+          <td >
+            <a href="{{ route('admin.project.show', $project) }}" class="btn btn-success">Vai</a>
+            <a href="{{ route('admin.project.show', $project) }}" class="btn btn-warning">Modifica</a>
+          </td>
         </tr>
       @endforeach
     </tbody>

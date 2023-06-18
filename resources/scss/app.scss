@@ -35,6 +35,10 @@ header{
 
   main{
     // debug
-    background-color: aqua;
+    background-color: rgb(60, 190, 190);
+
+    #actions{
+      min-width: 200px;
+    }
   }
 }
