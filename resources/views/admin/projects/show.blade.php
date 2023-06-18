@@ -17,7 +17,7 @@
   <h2 class=" my-2">
     Descrizione
   </h2>
-  <p>{!! $project->text !!}</p>
+  <p>{!! $project->description !!}</p>
 
   <a class="btn btn-primary" href="{{ route('admin.project.index') }}">Torna</a>
 

@@ -17,7 +17,7 @@ return new class extends Migration
       $table->id();
       $table->string('name');
       $table->string('slug')->unique();
-      $table->text('text')->nullable();
+      $table->text('description')->nullable();
       $table->string('category')->nullable();
       // "date_creation" è lo stesso del "created_at"?
       $table->date('date_creation')->nullable();
