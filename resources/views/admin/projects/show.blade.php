@@ -4,11 +4,16 @@
 
 <div class="container">
 
-  <h2 class=" my-2">
-    Titolo Progetto
+
+  <div class="d-inline">
+    <h2 class=" my-2 d-inline">
+      Titolo Progetto
+    </h2>
+
     <a href="{{ route('admin.project.edit', $project) }}" class="btn btn-warning" title="Modifica">Modifica</a>
     @include('admin.partials.form-delete')
-  </h2>
+  </div>
+
   <h3>{{ $project->name }}</h3>
 
   <h2 class=" my-2">
@@ -17,7 +22,7 @@
   <h3>{{ $data_formatted }}</h3>
 
   <div>
-    <img class="image w-100" src="{{ asset('storage/' . $project->image_path) }}" alt="{{ $project->name }}" onerror="this.src='/img/placeholder.jpg'">
+    <img class="image w-50" src="{{ asset('storage/' . $project->image_path) }}" alt="{{ $project->name }}" onerror="this.src='/img/placeholder.jpg'">
   </div>
 
   <h2 class=" my-2">
