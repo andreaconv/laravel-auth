@@ -31,7 +31,8 @@ class ProjectController extends Controller
     $title = 'Creazione di un nuovo Progetto';
     $method = 'POST';
     $route = route('admin.project.store');
-    return view('admin.projects.create-edit', compact('title', 'method', 'route'));
+    $project = null;
+    return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project'));
   }
 
   /**
@@ -84,7 +85,7 @@ class ProjectController extends Controller
     $title = 'Modifica del progetto: ' . $project->name;
     $method = 'PUT';
     $route = route('admin.project.update', $project);
-    return view('admin.projects.create-edit', compact('title', 'method', 'route'));
+    return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project'));
   }
 
   /**

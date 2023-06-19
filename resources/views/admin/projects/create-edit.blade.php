@@ -18,7 +18,7 @@
 
   <form action="{{ $route }}" method="POST" enctype="multipart/form-data">
     @csrf
-    @method('{{ $method }}')
+    @method($method)
 
     <div class="row">
 
@@ -27,7 +27,7 @@
         <input
           type="text"
           class="form-control @error('name') is-invalid @enderror"
-          value="{{ old('name') }}"
+          value="{{ old('name', $project?->name) }}"
           placeholder="Nome Progetto"
           id="name"
           name="name">
@@ -42,7 +42,7 @@
         <input
           type="text"
           class="form-control @error('category') is-invalid @enderror"
-          value="{{ old('category') }}"
+          value="{{ old('category', $project?->category) }}"
           placeholder="Categoria"
           id="category"
           name="category">
@@ -59,7 +59,7 @@
           class="form-control"
           name="date_creation"
           id="date_creation"
-          value="{{ old('date_creation') }}"
+          value="{{ old('date_creation', $project?->date_creation) }}"
           placeholder="Data di creazione">
       </div>
 
@@ -91,7 +91,7 @@
           class="form-control @error('category') is-invalid @enderror"
           placeholder="Descrizione"
           cols="30"
-          rows="10">{{ old('description') }}</textarea>
+          rows="10">{{ old('description', $project?->description) }}</textarea>
 
           @error('description')
             <p class="text-danger">{{ $message }}</p>
