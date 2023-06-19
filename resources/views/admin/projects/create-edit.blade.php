@@ -14,10 +14,11 @@
     </div>
   @endif
 
-  <h1>form nuovo progetto</h1>
+  <h1>{{ $title }}</h1>
 
-  <form action="{{ route('admin.project.store') }}" method="POST" enctype="multipart/form-data">
+  <form action="{{ $route }}" method="POST" enctype="multipart/form-data">
     @csrf
+    @method('{{ $method }}')
 
     <div class="row">
 
