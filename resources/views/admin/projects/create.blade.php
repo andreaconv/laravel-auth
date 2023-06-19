@@ -64,14 +64,22 @@
 
     </div>
 
-    <div class="mb-3">
-      <label for="image" class="form-label">Immagine</label>
-      <input
-        type="file"
-        class="form-control"
-        name="image"
-        id="image">
+    <div class="row">
+
+      <div class="mb-3 col-9">
+        <label for="image" class="form-label">Immagine</label>
+        <input
+          onchange="showimage(event)"
+          type="file"
+          class="form-control"
+          name="image"
+          id="image">
+      </div>
+      <div class="col-3">
+        <img class="image w-100" id="prev-image" src="" alt="">
+      </div>
     </div>
+
 
       <div class="mb-3">
         <label for="descrizione" class="form-label">Descrizione</label>
@@ -100,7 +108,12 @@
     .create( document.querySelector( '#description' ) )
     .catch( error => {
       console.error( error );
-    } );
+    });
+
+    function showimage(event){
+      const tagImage = document.getElementById('prev-image');
+      tagImage.src = URL.createObjectURL(event.target.files[0]);
+    }
 </script>
 
 @endsection
