@@ -12,4 +12,29 @@ Per ora è importante avere gli ambienti puliti e separati e non preoccupatevi c
 
 ---
 
-se si scarica il progetto lanciare il comando `php artisan storage:link` 
+se si scarica il progetto lanciare il comando `php artisan storage:link`
+
+---
+## STEPS per aggiungere l'immagine nel create
+1. aggiungere nel form `enctype="multipart/form-data"`
+2. aggiungere l'input col `type="file"` e il `name="image"`
+3. nel controller nello `store()` verifico che la chiave iamge esiste 
+```
+if(array_key_exists('image', $form_data)){
+
+  // prima di salvare l'immagine salvo il nome
+  $form_data['image_original_name'] = $request->file('image')->getClientOriginalName();
+  // salvo l'immagine nella cartella uploads e in $form_data['image_path'] salvo il percorso
+  $form_data['image_path'] = Storage::put('uploads', $form_data['image']);
+}
+```
+4. creare le colonne nel migrate 
+5. ricordarsi di aggiungere nel fillable i due cambi inseriti
+6. per vederla nella show richiamo il metodo asset()
+```
+<img src="{{ asset('storage/' . $project->image_path) }}" alt="{{ $project->name }}">
+```
+
+>EXTRA 
+
+se si vuole salvare anche il nome scrivere `Storage::putFileAs('uploads', $form_data['image'], 'nomeimmagine')`
