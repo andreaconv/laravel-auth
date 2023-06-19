@@ -15,6 +15,8 @@ class Project extends Model {
     'slug',
     'description',
     'category',
+    'image_path',
+    'image_original_name',
     'date_creation'
   ];
 
