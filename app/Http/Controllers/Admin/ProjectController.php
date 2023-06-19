@@ -47,12 +47,13 @@ class ProjectController extends Controller
     $form_data = $request->all();
     $form_data['slug'] = Project::generateSlug($form_data['name']);
 
+    // verifico se è stata caricata un'immagine
     if(array_key_exists('image', $form_data)){
 
       // prima di salvare l'immagine salvo il nome
       $form_data['image_original_name'] = $request->file('image')->getClientOriginalName();
       // salvo l'immagine nella cartella uploads e in $form_data['image_path'] salvo il percorso
-      $form_data['image_path'] = Storage::put('uploads', $form_data['image']);
+      $form_data['image_path'] = Storage::put('uploads/', $form_data['image']);
     }
 
     $new_project = new Project();
@@ -97,9 +98,32 @@ class ProjectController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(ProjectRequest $request, Project $project)
   {
-      //
+    $form_data = $request->all();
+
+    if($form_data['name'] !== $project->name){
+      $form_data['slug'] = Project::generateSlug($form_data['name']);
+    }else{
+      $form_data['slug'] = $project->slug;
+    }
+
+    // verifico se è stata caricata un'immagine
+    if(array_key_exists('image', $form_data)){
+      // se l'img esiste vuol dire che ne ho caricata una nuova e quindi elimino quella vecchia
+      if($project->image_path){
+        Storage::disk('public')->delete($project->image_path);
+      }
+
+      // prima di salvare l'immagine salvo il nome
+      $form_data['image_original_name'] = $request->file('image')->getClientOriginalName();
+      // salvo l'immagine nella cartella uploads e in $form_data['image_path'] salvo il percorso
+      $form_data['image_path'] = Storage::put('uploads/', $form_data['image']);
+    }
+
+    $project->update($form_data);
+
+    return redirect()->route('admin.project.show', $project);
   }
 
   /**

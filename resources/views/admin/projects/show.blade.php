@@ -6,6 +6,7 @@
 
   <h2 class=" my-2">
     Titolo Progetto
+    <a href="{{ route('admin.project.edit', $project) }}" class="btn btn-warning" title="Modifica">Modifica</a>
   </h2>
   <h3>{{ $project->name }}</h3>
 
@@ -15,7 +16,7 @@
   <h3>{{ $data_formatted }}</h3>
 
   <div>
-    <img class="image w-100" src="{{ asset('storage/' . $project->image_path) }}" alt="{{ $project->name }}">
+    <img class="image w-100" src="{{ asset('storage/' . $project->image_path) }}" alt="{{ $project->name }}" onerror="this.src='/img/placeholder.jpg'">
   </div>
 
   <h2 class=" my-2">
