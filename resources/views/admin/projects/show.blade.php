@@ -7,6 +7,7 @@
   <h2 class=" my-2">
     Titolo Progetto
     <a href="{{ route('admin.project.edit', $project) }}" class="btn btn-warning" title="Modifica">Modifica</a>
+    @include('admin.partials.form-delete')
   </h2>
   <h3>{{ $project->name }}</h3>
 

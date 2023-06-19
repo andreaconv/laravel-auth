@@ -8,6 +8,12 @@
     Project list
   </h2>
 
+  @if (session('deleted'))
+    <div class="alert alert-success" role="alert">
+      {{ session('deleted') }}
+    </div>
+  @endif
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -31,6 +37,7 @@
           <td >
             <a href="{{ route('admin.project.show', $project) }}" class="btn btn-success" title="Visualizza">Vai</a>
             <a href="{{ route('admin.project.edit', $project) }}" class="btn btn-warning" title="Modifica">Modifica</a>
+            @include('admin.partials.form-delete')
           </td>
         </tr>
       @endforeach

@@ -108,6 +108,7 @@ class ProjectController extends Controller
       $form_data['slug'] = $project->slug;
     }
 
+    // FIXME:------- blocco di codice simile nello store---------
     // verifico se è stata caricata un'immagine
     if(array_key_exists('image', $form_data)){
       // se l'img esiste vuol dire che ne ho caricata una nuova e quindi elimino quella vecchia
@@ -120,6 +121,7 @@ class ProjectController extends Controller
       // salvo l'immagine nella cartella uploads e in $form_data['image_path'] salvo il percorso
       $form_data['image_path'] = Storage::put('uploads/', $form_data['image']);
     }
+    // FIXME:------- blocco di codice simile nello store---------
 
     $project->update($form_data);
 
@@ -132,8 +134,16 @@ class ProjectController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
+  public function destroy(Project $project)
   {
-      //
+
+    // se il poogetto da eliminare contine un' immagine la devo cancellare dalla cartella
+    if($project->image_path){
+      Storage::disk('public')->delete($project->image_path);
+    }
+
+    $project->delete();
+
+    return redirect()->route('admin.project.index')->with('deleted', "Il progetto $project->name è stato eliminato correttamente");
   }
 }
