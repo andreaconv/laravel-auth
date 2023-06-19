@@ -14,6 +14,10 @@
   </h2>
   <h3>{{ $data_formatted }}</h3>
 
+  <div>
+    <img src="{{ asset('storage/' . $project->image_path) }}" alt="{{ $project->name }}">
+  </div>
+
   <h2 class=" my-2">
     Descrizione
   </h2>
