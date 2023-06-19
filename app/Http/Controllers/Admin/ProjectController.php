@@ -32,6 +32,7 @@ class ProjectController extends Controller
     $method = 'POST';
     $route = route('admin.project.store');
     $project = null;
+    // $image = '/img/placeholder.jpg';
     return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project'));
   }
 
@@ -85,6 +86,7 @@ class ProjectController extends Controller
     $title = 'Modifica del progetto: ' . $project->name;
     $method = 'PUT';
     $route = route('admin.project.update', $project);
+    // $image = 'asset(storage/ . $project->image_path)';
     return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project'));
   }
 

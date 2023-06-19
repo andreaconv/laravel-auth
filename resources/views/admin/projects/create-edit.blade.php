@@ -77,7 +77,9 @@
           id="image">
       </div>
       <div class="col-3">
-        <img class="image w-100" id="prev-image" src="" alt="">
+        <img class="image w-100" id="prev-image" src="{{ asset('storage/' . $project?->image_path) }}" onerror="this.src='/img/placeholder.jpg'">
+        {{-- FIXME: alternativa per il percoso dell'immagine placeholder sarebbe stata quella di salvare il percorso in una variabile e passarla dinamicamente coma abbiamo fatto per il titolo e gli altri --}}
+        {{-- <img class="image w-100" id="prev-image" src="{{ $image }}"> --}}
       </div>
     </div>
 
