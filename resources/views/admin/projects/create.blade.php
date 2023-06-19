@@ -16,7 +16,7 @@
 
   <h1>form nuovo progetto</h1>
 
-  <form action="{{ route('admin.project.store') }}" method="POST">
+  <form action="{{ route('admin.project.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="row">
@@ -62,6 +62,15 @@
           placeholder="Data di creazione">
       </div>
 
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Immagine</label>
+      <input
+        type="file"
+        class="form-control"
+        name="image"
+        id="image">
     </div>
 
       <div class="mb-3">
