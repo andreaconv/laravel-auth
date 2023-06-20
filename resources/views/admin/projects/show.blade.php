@@ -25,6 +25,9 @@
     <img class="image w-50" src="{{ asset('storage/' . $project->image_path) }}" alt="{{ $project->name }}" onerror="this.src='/img/placeholder.jpg'">
   </div>
 
+  {{-- FIXME: visualizza il nome dell'immagine --}}
+  <p>{{  $project->image_original_name  }}</p>
+
   <h2 class=" my-2">
     Descrizione
   </h2>
