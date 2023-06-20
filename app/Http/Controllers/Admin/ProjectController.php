@@ -48,6 +48,7 @@ class ProjectController extends Controller
     $form_data['slug'] = Project::generateSlug($form_data['name']);
 
     // verifico se è stata caricata un'immagine
+    // FIXME: alternativa della condizione if($request->hasFile('image'))
     if(array_key_exists('image', $form_data)){
 
       // prima di salvare l'immagine salvo il nome
