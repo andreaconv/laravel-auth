@@ -19,6 +19,9 @@ use App\Http\Controllers\Admin\ProjectController;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 
+
+// FIXME: nel file RouteServiceProvider.php (PATH->app\Providers\RouteServiceProvider.php) cambiare la riga 20 `public const HOME = '/admin';`
+
 Route::middleware(['auth', 'verified'])
   ->name('admin.')
   ->prefix('admin')
